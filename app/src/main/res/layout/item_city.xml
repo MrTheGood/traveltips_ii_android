@@ -47,10 +47,9 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/desc_cityImage"
-                android:padding="8dp"
                 android:scaleType="centerInside"
                 bind:imageUrl="@{viewModel.city.imageUrl}"
                 tools:src="@tools:sample/backgrounds/scenic"

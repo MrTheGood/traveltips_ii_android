@@ -14,21 +14,17 @@
  *    limitations under the License.
  */
 
-package eu.insertcode.traveltipsii.repository
+package eu.insertcode.traveltipsii.util
 
-import java.util.*
-import kotlin.properties.Delegates
-import kotlin.reflect.KProperty
+import android.databinding.BindingAdapter
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 /**
- * Created by maarten on 2018-02-28.
+ * Created by maarten on 2018-03-08.
  * Copyright © 2018 insertCode.eu. All rights reserved.
  */
-class TipRepository : Observable() {
-    private val onChanged = { property: KProperty<*>, _: Any?, _: Any? -> setChanged(); notifyObservers(property.name) }
-
-    var id: Int by Delegates.observable(-1, onChanged)
-    var tip: String by Delegates.observable("", onChanged)
-    //TODO: Rating
-    //LODO: User
+@BindingAdapter("tools:imageUrl")
+fun loadImage(imageView: ImageView, imageUrl: String) {
+    Glide.with(imageView).load(imageUrl).into(imageView)
 }

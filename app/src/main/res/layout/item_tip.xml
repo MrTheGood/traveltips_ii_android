@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~    Copyright 2018 Maarten de Goede
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="tipViewModel"
+            type="eu.insertcode.traveltipsii.viewModel.TipViewModel"
+            />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="2dp"
+        app:contentPadding="8dp"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/tip_title"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:maxLines="1"
+                android:text="@{tipViewModel.tipName}"
+                tools:text="@tools:sample/lorem"
+                />
+
+            <TextView
+                android:id="@+id/tip_tip"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ellipsize="end"
+                android:maxLines="10"
+                android:text="@{tipViewModel.tipTip}"
+                app:layout_constraintTop_toBottomOf="@id/tip_title"
+                tools:text="@tools:sample/lorem/random"
+                />
+
+            <ImageView
+                android:id="@+id/tip_favButton"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/desc_favBtn"
+                android:onClick="@{tipViewModel.onFavClick}"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_star_border"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tip_tip"
+                />
+
+            <ImageView
+                android:id="@+id/tip_shareButton"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/desc_shareBtn"
+                android:onClick="@{tipViewModel.onShareClick}"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_share"
+                app:layout_constraintEnd_toStartOf="@id/tip_favButton"
+                app:layout_constraintTop_toBottomOf="@+id/tip_tip"
+                />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

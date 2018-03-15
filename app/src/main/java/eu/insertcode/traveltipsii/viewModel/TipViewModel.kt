@@ -18,44 +18,40 @@ package eu.insertcode.traveltipsii.viewModel
 
 import android.databinding.BaseObservable
 import android.databinding.Bindable
+import android.util.Log
 import android.view.View
 import eu.insertcode.traveltipsii.BR
-import eu.insertcode.traveltipsii.repository.CityRepository
-import eu.insertcode.traveltipsii.view.activity.BaseActivity
-import eu.insertcode.traveltipsii.view.fragment.TipFragment
+import eu.insertcode.traveltipsii.repository.TipRepository
 import java.util.*
 
 /**
- * Created by maarten on 2018-02-28.
+ * Created by maarten on 2018-03-08.
  * Copyright © 2018 insertCode.eu. All rights reserved.
  */
-class CityViewModel(
-        private val city: CityRepository
+class TipViewModel(
+        private val tip: TipRepository
 ) : BaseObservable(), Observer {
     init {
-        city.addObserver(this)
+        tip.addObserver(this)
     }
 
     override fun update(o: Observable?, arg: Any?) {
         if (arg is String) {
             when (arg) {
-                "cityName" -> notifyPropertyChanged(BR.cityName)
-                "imageUrl" -> notifyPropertyChanged(BR.cityImageUrl)
-                "tips" -> notifyPropertyChanged(BR.cityTips)
+                "tip" -> notifyPropertyChanged(BR.tipTip)
+                "name" -> notifyPropertyChanged(BR.tipName)
             }
         }
     }
 
+    @Bindable
+    fun getTipName() = "Name"
 
     @Bindable
-    fun getCityName() = city.cityName
-
-    @Bindable
-    fun getCityImageUrl() = city.imageUrl
-
-    @Bindable
-    fun getCityTips() = city.tips
+    fun getTipTip() = tip.tip
 
 
-    val clickCityListener = View.OnClickListener { v -> (v?.context as BaseActivity).changePage(TipFragment.newInstance(city)) }
+    val onFavClick = View.OnClickListener { Log.d("temp", "Tip like clicked.") }
+
+    val onShareClick = View.OnClickListener { Log.d("temp", "Tip share clicked.") }
 }

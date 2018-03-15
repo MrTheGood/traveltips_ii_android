@@ -19,48 +19,104 @@ package eu.insertcode.traveltipsii.view.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
+import eu.insertcode.traveltipsii.AppData
 import eu.insertcode.traveltipsii.R
 import eu.insertcode.traveltipsii.repository.CityRepository
-import eu.insertcode.traveltipsii.view.adapter.CityAdapter
-import kotlinx.android.synthetic.main.activity_main.*
+import eu.insertcode.traveltipsii.repository.TipRepository
+import eu.insertcode.traveltipsii.view.fragment.CityFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     companion object {
-        fun newInstance(context: Context) = Intent(context, MainActivity::class.java)
+        fun newIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var city = CityRepository()
-        city.cityName = "Den Haag"
-        city.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
-        val cityList = arrayListOf(city)
+        //todo: start demo content
+        AppData.cities.add(CityRepository().apply {
+            id = 0
+            cityName = "Den Haag"
+            imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
+            tips = arrayListOf(TipRepository().apply {
+                id = 0
+                tip = "Dit is een voorbeeld tip."
+            }, TipRepository().apply {
+                id = 1
+                tip = "Dit is nog een voorbeeld tip als extra voorbeeld."
+            }, TipRepository().apply {
+                id = 2
+                tip = "Lorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflk"
+            })
+        })
 
-        city = CityRepository()
-        city.cityName = "Rotterdam"
-        city.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
-        cityList.add(city)
+        AppData.cities.add(CityRepository().apply {
+            id = 1
+            cityName = "Rotterdam"
+            imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
+            tips = arrayListOf(TipRepository().apply {
+                id = 0
+                tip = "Dit is een voorbeeld tip."
+            }, TipRepository().apply {
+                id = 1
+                tip = "Dit is nog een voorbeeld tip als extra voorbeeld."
+            }, TipRepository().apply {
+                id = 2
+                tip = "Lorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflk"
+            })
+        })
 
-        city = CityRepository()
-        city.cityName = "Amsterdam"
-        city.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
-        cityList.add(city)
+        AppData.cities.add(CityRepository().apply {
+            id = 2
+            cityName = "Amsterdam"
+            imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
+            tips = arrayListOf(TipRepository().apply {
+                id = 0
+                tip = "Dit is een voorbeeld tip."
+            }, TipRepository().apply {
+                id = 1
+                tip = "Dit is nog een voorbeeld tip als extra voorbeeld."
+            }, TipRepository().apply {
+                id = 2
+                tip = "Lorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflk"
+            })
+        })
 
-        city = CityRepository()
-        city.cityName = "Utrecht"
-        city.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
-        cityList.add(city)
+        AppData.cities.add(CityRepository().apply {
+            id = 3
+            cityName = "Utrecht"
+            imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
+            tips = arrayListOf(TipRepository().apply {
+                id = 0
+                tip = "Dit is een voorbeeld tip."
+            }, TipRepository().apply {
+                id = 1
+                tip = "Dit is nog een voorbeeld tip als extra voorbeeld."
+            }, TipRepository().apply {
+                id = 2
+                tip = "Lorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflk"
+            })
+        })
 
-        city = CityRepository()
-        city.cityName = "Leiden"
-        city.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
-        cityList.add(city)
+        AppData.cities.add(CityRepository().apply {
+            id = 4
+            cityName = "Leiden"
+            imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Den_Haag_wapen.svg/320px-Den_Haag_wapen.svg.png"
+            tips = arrayListOf(TipRepository().apply {
+                id = 0
+                tip = "Dit is een voorbeeld tip."
+            }, TipRepository().apply {
+                id = 1
+                tip = "Dit is nog een voorbeeld tip als extra voorbeeld."
+            }, TipRepository().apply {
+                id = 2
+                tip = "Lorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflkLorem ipsum dolor sit amet consecq;alskdf ;lkadnfh owalkb daslfkab dolsfjbe ilaskdbf eilakmsdbjflk"
+            })
+        })
+        //todo: end demo content
 
-        cities_recycler.layoutManager = GridLayoutManager(this, 2)
-        cities_recycler.adapter = CityAdapter(this, cityList)
+
+        changePage(CityFragment.newInstance())
     }
 }

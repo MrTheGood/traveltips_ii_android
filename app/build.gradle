@@ -51,6 +51,7 @@ dependencies {
     kapt "com.android.databinding:compiler:3.0.1"
 
     // Support
+    implementation "com.android.support:support-v4:$supportVer"
     implementation "com.android.support:appcompat-v7:$supportVer"
     implementation "com.android.support:design:$supportVer"
     implementation "com.android.support:cardview-v7:$supportVer"

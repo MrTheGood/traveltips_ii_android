@@ -18,13 +18,14 @@ package eu.insertcode.traveltipsii.view.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import eu.insertcode.traveltipsii.AppData
+import eu.insertcode.traveltipsii.R
 import eu.insertcode.traveltipsii.repository.CityRepository
 import eu.insertcode.traveltipsii.view.adapter.TipAdapter
+import kotlinx.android.synthetic.main.fragment_tip.view.*
 
 /**
  * Created by maarten on 2018-02-28.
@@ -48,8 +49,9 @@ class TipFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = RecyclerView(container!!.context).apply {
-        this.layoutManager = LinearLayoutManager(container.context)
-        adapter = TipAdapter(container.context, city.tips)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val v = inflater.inflate(R.layout.fragment_tip, container, false)
+        v.recycler.adapter = TipAdapter(container!!.context, city.tips)
+        return v
     }
 }

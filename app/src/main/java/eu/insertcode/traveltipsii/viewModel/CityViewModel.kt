@@ -58,4 +58,8 @@ class CityViewModel(
 
 
     val clickCityListener = View.OnClickListener { v -> (v?.context as BaseActivity).changePage(TipFragment.newInstance(city)) }
+
+    val clickTipAddListener = View.OnClickListener { v ->
+        //todo
+    }
 }

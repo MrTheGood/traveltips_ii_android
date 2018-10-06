@@ -22,10 +22,16 @@
     >
 
     <data>
+
+        <variable
+            name="cityViewModel"
+            type="eu.insertcode.traveltipsii.viewModel.CityViewModel"
+            />
     </data>
 
 
     <FrameLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -36,6 +42,7 @@
             android:layout_height="match_parent"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:listitem="@layout/item_tip"
+            tools:tipList="@{cityViewModel.cityTips}"
             />
 
         <android.support.design.widget.FloatingActionButton
@@ -44,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
+            android:onClick="@{cityViewModel.clickTipAddListener}"
             android:src="@drawable/ic_add"
             android:tint="@color/white"
             app:fabSize="normal"

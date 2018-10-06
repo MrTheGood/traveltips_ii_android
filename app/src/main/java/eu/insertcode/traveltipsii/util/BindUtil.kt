@@ -17,8 +17,11 @@
 package eu.insertcode.traveltipsii.util
 
 import android.databinding.BindingAdapter
+import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import eu.insertcode.traveltipsii.repository.TipRepository
+import eu.insertcode.traveltipsii.view.adapter.TipAdapter
 
 /**
  * Created by maarten on 2018-03-08.
@@ -27,4 +30,9 @@ import com.bumptech.glide.Glide
 @BindingAdapter("tools:imageUrl")
 fun loadImage(imageView: ImageView, imageUrl: String) {
     Glide.with(imageView).load(imageUrl).into(imageView)
+}
+
+@BindingAdapter("tools:tipList")
+fun loadTips(recyclerView: RecyclerView, tips: ArrayList<TipRepository>) {
+    recyclerView.adapter = TipAdapter(recyclerView.context, tips)
 }

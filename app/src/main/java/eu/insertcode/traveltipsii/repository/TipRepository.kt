@@ -14,15 +14,21 @@
  *    limitations under the License.
  */
 
-package eu.insertcode.traveltipsii
+package eu.insertcode.traveltipsii.repository
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import java.util.*
+import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
-class MainActivity : AppCompatActivity() {
+/**
+ * Created by maarten on 2018-02-28.
+ * Copyright © 2018 insertCode.eu. All rights reserved.
+ */
+class TipRepository : Observable() {
+    private val onChanged = { property: KProperty<*>, _: Any?, _: Any? -> setChanged(); notifyObservers(property.name) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+    var id: Int by Delegates.observable(-1, onChanged)
+    var tip: String by Delegates.observable("", onChanged)
+    //TODO: Rating
+    //LODO: User
 }

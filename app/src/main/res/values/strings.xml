@@ -16,4 +16,7 @@
 
 <resources>
     <string name="app_name">TravelTipsII</string>
+    <string name="desc_cityImage">City coat of arms</string>
+    <string name="desc_favBtn">Add to favourites</string>
+    <string name="desc_shareBtn">Share tip</string>
 </resources>
